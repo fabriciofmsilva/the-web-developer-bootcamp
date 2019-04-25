@@ -1,0 +1,13 @@
+<h1>Dogs</h1>
+
+<% dogs.forEach(function (dog) { %>
+  <li>
+    <strong><%= dog.name %></strong> - <%= dog.breed %>
+  </li>
+<% }) %>
+
+<form action="/create-dog" method="POST">
+  <input name="name" type="text" placeholder="name">
+  <input name="breed" type="text" placeholder="breed">
+  <input type="submit">
+</form>
