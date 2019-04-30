@@ -1,0 +1,30 @@
+const express = require('express');
+const app = express();
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+
+app.set('view engine', 'ejs');
+
+const friends = ['Tony', 'Miranda', 'Justin'];
+
+app.get('/', function(req, res) {
+  res.render('home');
+});
+
+app.get('/friends', function(req, res) {
+  res.render('friends', { friends: friends });
+});
+
+app.post('/friends', function(req, res) {
+  const { name } = req.body;
+  friends.push(name)
+  res.redirect('/friends');
+});
+
+app.listen(3000, function() {
+  console.log('Server started!!!');
+});
